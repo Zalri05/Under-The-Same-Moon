@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Under The Same Moon 🌙</title>
+<title>A Piece of Moonlight 🌙</title>
 
 <style>
 * {
@@ -16,18 +16,20 @@ body {
     padding: 20px 12px;
     font-family: Georgia, serif;
     text-align: center;
-    color: #684c68;
-    background: linear-gradient(160deg, #ffe0c5, #f5b6bd, #c5a1c9);
+    color: #e8defa;
+    background: linear-gradient(160deg, #10152f, #25264d, #51436e);
 }
 
 h1 {
     font-size: 30px;
+    color: #f5e8ff;
+    text-shadow: 0 0 15px #c6a6ff;
     margin: 10px 0;
-    color: #9c5d72;
 }
 
 .subtitle {
     font-size: 14px;
+    color: #d1c4ed;
     margin-bottom: 20px;
 }
 
@@ -37,8 +39,9 @@ h1 {
     margin: auto;
     padding: 18px;
     border-radius: 20px;
-    background: rgba(255,255,255,.65);
-    box-shadow: 0 8px 25px rgba(105,65,95,.15);
+    background: rgba(255,255,255,.09);
+    border: 1px solid rgba(220,200,255,.25);
+    box-shadow: 0 8px 30px rgba(0,0,0,.25);
 }
 
 .stats {
@@ -48,6 +51,7 @@ h1 {
     font-family: Arial, sans-serif;
     font-size: 14px;
     font-weight: bold;
+    color: #e8dcff;
 }
 
 #puzzle {
@@ -58,41 +62,35 @@ h1 {
     gap: 4px;
     padding: 5px;
     border-radius: 12px;
-    background: #fff0e9;
+    background: #252344;
     overflow: hidden;
 }
 
 .tile {
-    position: relative;
     border: none;
     border-radius: 5px;
     background-repeat: no-repeat;
     cursor: pointer;
     touch-action: manipulation;
-    transition: filter .15s, transform .15s;
     -webkit-tap-highlight-color: transparent;
 }
 
 .tile:not(.empty):active {
-    filter: brightness(1.15);
+    filter: brightness(1.2);
     transform: scale(.97);
 }
 
 .tile.empty {
-    background: rgba(195,145,170,.15);
-    border: 2px dashed rgba(165,110,140,.4);
+    background: rgba(255,255,255,.07);
+    border: 2px dashed rgba(220,200,255,.3);
     cursor: default;
-}
-
-.tile:focus-visible {
-    outline: 3px solid #a45f83;
-    outline-offset: -3px;
 }
 
 .instructions {
     font-family: Arial, sans-serif;
     font-size: 13px;
     line-height: 1.6;
+    color: #d1c4ed;
     margin: 15px 0;
 }
 
@@ -104,11 +102,11 @@ h1 {
 }
 
 button.action {
-    padding: 13px 18px;
-    min-height: 46px;
-    border: none;
+    padding: 14px 20px;
+    min-height: 48px;
+    border: 1px solid rgba(255,255,255,.2);
     border-radius: 25px;
-    background: #d77e91;
+    background: #8872b9;
     color: white;
     font-size: 14px;
     font-weight: bold;
@@ -130,28 +128,24 @@ button.action:active {
     border-radius: 12px;
 }
 
-/* FULL SCREEN WINNING PAGE */
+#preview p {
+    color: #e8dcff;
+}
 
 #win-screen {
     display: none;
-
     position: fixed;
     inset: 0;
     z-index: 9999;
-
     width: 100%;
     height: 100vh;
     height: 100dvh;
-
-    margin: 0;
-    padding: 35px 20px;
+    padding: 30px 20px;
     overflow-y: auto;
 
-    border-radius: 0;
-
-    background-color: #392b42;
+    background-color: #10152f;
     background-size: cover;
-    background-position: center center;
+    background-position: center;
     background-repeat: no-repeat;
 
     color: white;
@@ -160,68 +154,47 @@ button.action:active {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
-    animation: appear .8s ease;
 }
-
-/* DARK TRANSPARENT OVERLAY */
 
 #win-screen::before {
     content: "";
     position: fixed;
     inset: 0;
+    background: rgba(9,12,32,.55);
     z-index: 0;
     pointer-events: none;
-
-    background: rgba(25, 15, 35, 0.48);
 }
-
-/* MESSAGE ABOVE THE OVERLAY */
 
 #win-screen > * {
     position: relative;
     z-index: 1;
-
     width: 100%;
     max-width: 430px;
-
-    margin-left: auto;
-    margin-right: auto;
-}
-
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 #win-screen h1 {
-    color: #fff0d9;
-    text-shadow: 0 2px 10px rgba(0,0,0,.7);
+    color: #fff1c9;
+    text-shadow: 0 0 15px rgba(230,210,255,.9);
 }
 
 #win-screen p {
     line-height: 1.8;
-    text-shadow: 0 2px 6px rgba(0,0,0,.8);
+    text-shadow: 0 2px 6px rgba(0,0,0,.9);
+}
+
+#win-screen .moon-art {
+    font-size: 55px;
+    margin: 15px auto;
+    filter: drop-shadow(0 0 15px #fff0b5);
 }
 
 .special-message {
-    font-size: 18px;
+    font-size: 19px;
     font-style: italic;
-    color: #ffe3c2;
+    color: #fff0c9;
 }
 
-#win-screen .sunset-art {
-    font-size: 48px;
-    margin: 20px auto;
-}
-
-@media(max-width: 380px) {
+@media(max-width:380px) {
     h1 {
         font-size: 25px;
     }
@@ -235,14 +208,12 @@ button.action:active {
 
 <body>
 
-<!-- GAME PAGE -->
-
 <div id="game-page">
 
-    <h1>🌃 Under The Same Moon</h1>
+    <h1>🌙 A Piece of Moonlight</h1>
 
     <p class="subtitle">
-        A little puzzle, a beautiful moment.
+        Some things are worth taking the time to put together.
     </p>
 
     <div class="game-card">
@@ -255,70 +226,73 @@ button.action:active {
         <div id="puzzle"></div>
 
         <p class="instructions">
-            Rearrange the pieces to restore the sunset.
+            Rearrange the pieces to reveal the moon.
             Tap a tile beside the empty space to move it.
         </p>
 
         <div class="buttons">
-
             <button class="action" onclick="shufflePuzzle()">
-                🔀 Shuffle
+                ✨ Shuffle
             </button>
 
             <button class="action" onclick="togglePreview()">
-                👀 Preview
+                🌙 Preview
             </button>
-
         </div>
 
         <div id="preview">
-            <p>Here's the picture you're completing:</p>
-            <img id="preview-image" alt="Completed sunset puzzle">
+            <p>Here's the moon you're putting together:</p>
+            <img id="preview-image" alt="Moon puzzle preview">
         </div>
 
     </div>
-
 </div>
-
-
-<!-- WINNING MESSAGE -->
 
 <div id="win-screen">
 
-    <h1> You Found the Moonlight! 🌙✨</h1>
+    <h1>You Found the Moonlight! 🌙</h1>
 
-    <div class="sunset-art">🌉🌙🌌</div>
+    <div class="moon-art">🌕✨🌌</div>
+
+    <p>
+        Look at that... every little piece has finally
+        found its place.
+    </p>
+
+    <p>
+        What once seemed scattered and incomplete
+        has now become something beautiful.
+        And just like this little puzzle, sometimes
+        the most beautiful things in life take a
+        little patience to put together.
+    </p>
 
     <p class="special-message">
-        Look at that... every little piece has finally found its place.
-    </p>
-    
-    <p>
-        What once seemed scattered and incomplete has now become something beautiful. 
-        And just like this little puzzle, sometimes the most beautiful things in life 
-        take a little patience to put together.
-    </p>
-    
-    <p>
-        "The moon doesn't need to be whole to shine, and neither do we."
+        "The moon doesn't need to be whole to shine,
+        and neither do we."
     </p>
 
     <p>
-        Even on nights when the moon is only a little crescent, 
-        it never loses its beauty. 
-        So I hope you remember that you don't have to have everything figured out to be enough. 
-        You don't always have to be at your brightest to be someone special.🌕
-    </p>
-    
-    <p>
-        And whenever life gets a little dark, I hope you find your own little moonlight to guide you home.✨
+        Even on nights when the moon is only a little
+        crescent, it never loses its beauty.
+        So I hope you remember that you don't have
+        to have everything figured out to be enough.
+        You don't always have to be at your brightest
+        to be someone special.
     </p>
 
-     <p>
-        After all, no matter how far apart we may be, we're still looking at the same moon. 🌙
+    <p>
+        And whenever life gets a little dark,
+        I hope you find your own little moonlight
+        to guide you home.
     </p>
-    
-    <p>Don't stress yourself too much, oki? Enjoy your day.</p>
+
+    <p>
+        After all, no matter how far apart we may be,
+        we're still looking at the same moon. 🌙
+    </p>
+
+    <p><b> Don't stress yourself too much, oki? Enjoy your day. ❤️</b></p>
 
     <button class="action" onclick="restartGame()">
         🌃 Play Again
@@ -326,25 +300,25 @@ button.action:active {
 
 </div>
 
-
 <script>
 
-// IMAGE LOCATION
-// Make sure the filename matches your GitHub image.
-
-const imageURL = "./253259.jpeg";
-
-document.getElementById("preview-image").src = imageURL;
+// Change this to your own moon photo filename
+const imageURL = "./moon.jpeg";
 
 const puzzle = document.getElementById("puzzle");
+const previewImage = document.getElementById("preview-image");
+const winScreen = document.getElementById("win-screen");
+
+previewImage.src = imageURL;
+
+// Use the same image for the winning screen
+winScreen.style.backgroundImage = `url("${imageURL}")`;
 
 let board = [];
 let moves = 0;
 let gameFinished = false;
 
-
-// CREATE PUZZLE
-
+// Create puzzle
 function createPuzzle() {
 
     puzzle.innerHTML = "";
@@ -365,22 +339,14 @@ function createPuzzle() {
             const row = Math.floor(tile / 3);
             const col = tile % 3;
 
-            button.style.backgroundImage =
-                `url("${imageURL}")`;
-
+            button.style.backgroundImage = `url("${imageURL}")`;
             button.style.backgroundSize = "300% 300%";
-
             button.style.backgroundPosition =
                 `${col * 50}% ${row * 50}%`;
 
-            button.setAttribute(
-                "aria-label",
-                `Puzzle piece ${tile + 1}`
-            );
+            button.setAttribute("aria-label", `Piece ${tile + 1}`);
 
-            button.addEventListener("click", () => {
-                moveTile(index);
-            });
+            button.addEventListener("click", () => moveTile(index));
 
         }
 
@@ -391,9 +357,7 @@ function createPuzzle() {
     updateStats();
 }
 
-
-// UPDATE COUNTERS
-
+// Update statistics
 function updateStats() {
 
     document.getElementById("moves").textContent = moves;
@@ -401,38 +365,25 @@ function updateStats() {
     let correct = 0;
 
     board.forEach((tile, index) => {
-
-        if (tile === index && tile !== 8) {
-            correct++;
-        }
-
+        if (tile === index && tile !== 8) correct++;
     });
 
-    document.getElementById("pieces").textContent =
-        `${correct}/8`;
-
+    document.getElementById("pieces").textContent = `${correct}/8`;
 }
 
+// Check adjacent tiles
+function isAdjacent(a, b) {
 
-// CHECK NEIGHBORING TILES
+    const rowA = Math.floor(a / 3);
+    const colA = a % 3;
 
-function isAdjacent(index1, index2) {
+    const rowB = Math.floor(b / 3);
+    const colB = b % 3;
 
-    const row1 = Math.floor(index1 / 3);
-    const col1 = index1 % 3;
-
-    const row2 = Math.floor(index2 / 3);
-    const col2 = index2 % 3;
-
-    return (
-        Math.abs(row1 - row2) +
-        Math.abs(col1 - col2) === 1
-    );
+    return Math.abs(rowA - rowB) + Math.abs(colA - colB) === 1;
 }
 
-
-// MOVE TILE
-
+// Move a tile
 function moveTile(index) {
 
     if (gameFinished) return;
@@ -454,42 +405,21 @@ function moveTile(index) {
 
         setTimeout(() => {
 
-            const winScreen =
-                document.getElementById("win-screen");
-
-            // IMPORTANT: SET THE FULL-SCREEN PHOTO
-            winScreen.style.backgroundImage =
-                `url("${imageURL}")`;
-
-            // HIDE THE GAME
-            document.getElementById("game-page").style.display =
-                "none";
-
-            // SHOW THE WINNING MESSAGE
+            document.getElementById("game-page").style.display = "none";
             winScreen.style.display = "flex";
 
-            // PREVENT BACKGROUND SCROLLING
-            document.body.style.overflow = "hidden";
-
         }, 350);
-
     }
 }
 
-
-// CHECK IF PUZZLE IS SOLVED
-
+// Check if puzzle is solved
 function checkWin() {
 
-    return board.every((tile, index) =>
-        tile === index
-    );
+    return board.every((tile, index) => tile === index);
 
 }
 
-
-// SHUFFLE PUZZLE
-
+// Shuffle using legal moves
 function shufflePuzzle() {
 
     board = [0,1,2,3,4,5,6,7,8];
@@ -499,22 +429,17 @@ function shufflePuzzle() {
     for (let i = 0; i < 200; i++) {
 
         const emptyIndex = board.indexOf(8);
-
         let options = [];
 
         for (let j = 0; j < 9; j++) {
 
-            if (
-                isAdjacent(j, emptyIndex) &&
-                j !== previousEmpty
-            ) {
+            if (isAdjacent(j, emptyIndex) && j !== previousEmpty) {
                 options.push(j);
             }
 
         }
 
-        const choice =
-            options[Math.floor(Math.random() * options.length)];
+        const choice = options[Math.floor(Math.random() * options.length)];
 
         previousEmpty = emptyIndex;
 
@@ -527,49 +452,35 @@ function shufflePuzzle() {
     gameFinished = false;
 
     createPuzzle();
-
 }
 
-
-// PREVIEW TOGGLE
-
+// Preview toggle
 function togglePreview() {
 
     const preview = document.getElementById("preview");
 
     preview.style.display =
-        preview.style.display === "block"
-        ? "none"
-        : "block";
+        preview.style.display === "block" ? "none" : "block";
 
 }
 
-
-// RESTART GAME
-
+// Restart game
 function restartGame() {
 
-    document.getElementById("win-screen").style.display =
-        "none";
+    winScreen.style.display = "none";
 
-    document.getElementById("game-page").style.display =
-        "block";
+    document.getElementById("game-page").style.display = "block";
 
-    document.getElementById("preview").style.display =
-        "none";
-
-    document.body.style.overflow = "auto";
+    document.getElementById("preview").style.display = "none";
 
     shufflePuzzle();
-
 }
 
-
-// START GAME
-
+// Start game
 restartGame();
 
 </script>
 
 </body>
 </html>
+```
